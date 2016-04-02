@@ -12,6 +12,8 @@ client = TwilioRestClient(account, token)
 def send_sms(receiver_number, context):
     """
     Input a number to get a text using the TwilioRestClient.
+    :param receiver_number: string, number to send to
+    :param context: string, haiku to generate
     """
     message = client.messages.create(to=receiver_number,
                                      from_=number,
