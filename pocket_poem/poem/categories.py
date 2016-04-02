@@ -1,5 +1,5 @@
 # coding=utf-8
-PARTS_OF_SPEECH = (('articles', 'articles'),
+PARTS_OF_SPEECH = (('article', 'article'),
                    ('noun', 'noun'),
                    ('verb', 'verb'),
                    ('adjective', 'adjective'),
