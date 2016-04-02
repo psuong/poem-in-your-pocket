@@ -10,4 +10,5 @@ class Category(models.Model):
 
 class Word(models.Model):
     syllable_count = models.SmallIntegerField()
+    article_id = models.IntegerField(null=True, blank=True)
     category = models.ForeignKey(Category)
