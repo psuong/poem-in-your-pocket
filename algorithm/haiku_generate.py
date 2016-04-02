@@ -1,5 +1,11 @@
-from vocab import vocab
+import random as rand
+from sentences import sentences
 
-#vocab - verbs, nouns, similes
+num = rand.randint(0,len(sentences)-1)
 
-print vocab[verbs]
+sentence = ""
+
+for word in sentences[num]:
+    sentence += word + " "
+
+print sentence
