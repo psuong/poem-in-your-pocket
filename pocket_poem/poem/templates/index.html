@@ -28,19 +28,32 @@
                             {% endfor %}
                         </select>
                     -->
-                        <table>
+
+                        <div class="col s12">
 
                         {% for topic in feeds %}
-                        <tr>
+
                             <div class=" red accent-1 col s4">
                                 <input name="topic" id="{{ topic }}" type="radio">
                                 <label for="{{ topic }}" class="white-text">{{ topic }}</label>
                             </div>
-                        </tr>
 
                         {% endfor %}
+                        </div>
 
-                        </table>
+                        <!--<table>-->
+
+                        <!--{% for topic in feeds %}-->
+                        <!--<tr>-->
+                            <!--<div class=" red accent-1 col s4">-->
+                                <!--<input name="topic" id="{{ topic }}" type="radio">-->
+                                <!--<label for="{{ topic }}" class="white-text">{{ topic }}</label>-->
+                            <!--</div>-->
+                        <!--</tr>-->
+
+                        <!--{% endfor %}-->
+
+                        <!--</table>-->
 
                     </div>
                 </div>
