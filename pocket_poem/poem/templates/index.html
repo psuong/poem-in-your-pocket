@@ -20,7 +20,7 @@
             <form method="POST" action="{{ form_url }}">
                 {% csrf_token %}
                 <div class="row">
-                    <div class="container col s4 offset-l4">
+                    <div class="container col s6 offset-l3">
                         <!--
                         <select name="feed" id="feed">
                             {%  for topic in feeds %}
@@ -28,12 +28,20 @@
                             {% endfor %}
                         </select>
                     -->
+                        <table>
+
                         {% for topic in feeds %}
-                        <div class="waves-effect waves-light btn red accent-1 col s4">
-                            <input name="topic" id="{{ topic }}" type="radio">
-                            <label for="{{ topic }}" class="white-text">{{ topic }}</label>
-                        </div>
+                        <tr>
+                            <div class=" red accent-1 col s4">
+                                <input name="topic" id="{{ topic }}" type="radio">
+                                <label for="{{ topic }}" class="white-text">{{ topic }}</label>
+                            </div>
+                        </tr>
+
                         {% endfor %}
+
+                        </table>
+
                     </div>
                 </div>
                         <div class="input-field col s4 offset-l4">
