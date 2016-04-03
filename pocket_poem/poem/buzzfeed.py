@@ -26,8 +26,7 @@ def clean_html(raw_html):
 
 def populate_categories():
     for category in PARTS_OF_SPEECH:
-        print category
-        Category.objects.get_or_create(name=category)
+        Category.objects.get_or_create(name=category[0])
 
 
 def populate_words(buzz_section=None):
@@ -51,7 +50,9 @@ def populate_words(buzz_section=None):
                         # store the word
                         category = part_of_speech(word.lower())
                         if category is not None:
-                            Word.objects.get_or_create(text=word.lower(),
-                                                       syllable_count=syllable_count(word.lower()),
-                                                       article_id=buzz['id'],
-                                                       category=Category.objects.get(name=category))
+                            if not Word.objects.filter(text=word.lower(), section=section).exists():
+                                Word.objects.get_or_create(text=word.lower(),
+                                                           syllable_count=syllable_count(word.lower()),
+                                                           article_id=buzz['id'],
+                                                           category=Category.objects.get(name=category),
+                                                           section=section)
