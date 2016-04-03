@@ -21,13 +21,6 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="container col s4 offset-l4">
-                        <!--
-                        <select name="feed" id="feed">
-                            {%  for topic in feeds %}
-                            <option value="{{ topic }}">{{ topic }}</option>
-                            {% endfor %}
-                        </select>
-                    -->
                         {% for topic in feeds %}
                         <div class="waves-effect waves-light btn red accent-1 col s4">
                             <input name="topic" id="{{ topic }}" type="radio">
@@ -37,7 +30,7 @@
                     </div>
                 </div>
                         <div class="input-field col s4 offset-l4">
-                            <input id="telephone" type="text" name="phone_number" length="10" class="validate">
+                            <input id="telephone" type="text" name="phone_number" length="10" class="validate" required>
                             <label for="telephone">Text this haiku to:</label>
                         </div>
                         <div class="col s6 offset-l3 center">
