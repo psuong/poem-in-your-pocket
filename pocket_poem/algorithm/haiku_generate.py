@@ -23,4 +23,5 @@ def generate_haiku(theme=None):
         line3 = generate_line(5, theme)
 
     # Print the haiku!
-    print "%s\n%s\n%s" % (line1, line2, line3)
+    # print "%s\n%s\n%s" % (line1, line2, line3)
+    return line1, line2, line3

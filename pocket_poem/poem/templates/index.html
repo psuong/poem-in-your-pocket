@@ -30,7 +30,7 @@
                     -->
                         {% for topic in feeds %}
                         <div class="waves-effect waves-light btn red accent-1 col s4">
-                            <input name="{{ topic }}" id="{{ topic }}" type="radio">
+                            <input name="topic" id="{{ topic }}" type="radio">
                             <label for="{{ topic }}" class="white-text">{{ topic }}</label>
                         </div>
                         {% endfor %}
@@ -45,6 +45,21 @@
                         </div>
                 </div>
             </form>
+
+            {% if haiku %}
+            <div class="card-panel col s6 push-l3 row">
+                <div class="valign-wrapper">
+                    <h4 class="valign center-align">
+                        {{ haiku.0 }}
+                        <br>
+                        {{ haiku.1 }}
+                        <br>
+                        {{ haiku.2 }}
+                    </h4>
+                </div>
+            </div>
+            {% endif %}
+            </div>
         </div>
         <!--
         <div class="row">
