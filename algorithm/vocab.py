@@ -1,3 +1,4 @@
+# Temporary vocabulary list
 vocab = {
     'nouns': [
         ['cat',1],['dog',1],['tiger',2],['lion',2],['rhinocerous',4],['elephant',3]
