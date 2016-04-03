@@ -10,30 +10,36 @@
     </head>
 
     <body>
-    	<div class="container col s4 offset-l4 ">
-		<div class="input-field col s12">
-			<select>
-				<option value="" disabled selected>Themes</option>
-				<option value="1">Option 1</option>
-				<option value="2">Option 2</option>
-				<option value="3">Option 3</option>
-			</select>
-			<label>Pick a theme from Buzzfeed</label>
-		</div>
-	</div>
-
-    <br>
-    <br>
-
-    <form class="cols s6 offset-13 center" action="{{ form_url }}" method="POST">
-        {% csrf_token %}
-        <h4>Text this haiku to:</h4>
-        <div class="input-field col s4 offset-l4">
-            <input id="telephone" type="text" name="phone_number" length="10" class="validate">
+        <nav>
+    		<div class="nav-wrapper">
+    			<a href="#" class="brand-logo center">Poem In Your Pocket</a>
+    		</div>
+    	</nav>
+        <div class="row">
+            <form method="POST" action="{{ form_url }}">
+                <div class="container col s4 offset-l4">
+                    <select>
+                        <option value="" disabled selected>Feed</option>
+                        {%  for element in feeds %}
+                        <option value="{{ element.value }}">{{ element.feed_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </form>
         </div>
-        <div class="col s6 offset-l3 center">
-            <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+        <div class="row">
+            <div class="container col s4 offset-l4">
+                <form class="cols s6 offset-13 center" action="{{ form_url }}" method="POST">
+                    {% csrf_token %}
+                    <h4>Text this haiku to:</h4>
+                    <div class="input-field col s4 offset-l4">
+                        <input id="telephone" type="text" name="phone_number" length="10" class="validate">
+                    </div>
+                    <div class="col s6 offset-l3 center">
+                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </form>
     </body>
 </html>
