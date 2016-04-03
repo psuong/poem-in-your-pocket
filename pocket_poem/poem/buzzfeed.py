@@ -20,13 +20,16 @@ PUNCTUATIONS = set(string.punctuation)
 
 
 def clean_html(raw_html):
-    return ''.join(ch for ch in re.sub(CLEAN_REGEX, '', raw_html) if ch not in PUNCTUATIONS)
+    return ''.join(ch for ch in re.sub(CLEAN_REGEX, '', raw_html) if ch not in PUNCTUATIONS or ch == '\'')
+
+
+def clean_punctuation(sentence):
+    return ''.join(ch for ch in sentence if ch not in PUNCTUATIONS or ch == '\'')
 
 
 def populate_categories():
     for category in PARTS_OF_SPEECH:
-        print category
-        Category.objects.get_or_create(name=category)
+        Category.objects.get_or_create(name=category[0])
 
 
 def populate_words(buzz_section=None):
@@ -43,14 +46,15 @@ def populate_words(buzz_section=None):
         for buzz in buzzes:
             # hit all the IDs
             article_r = requests.get(BUZZ_ARTICLES_ENDPOINT.format(buzz['id']))
-            sub_buzzes = article_r.json()['buzz']['sub_buzzes']
-            for sub_buzz in sub_buzzes:
-                for word in clean_html(sub_buzz['description']).split(' '):
-                    if not word == word.upper() and word:
-                        # store the word
-                        category = part_of_speech(word.lower())
-                        if category is not None:
+            buzz_title = article_r.json()['buzz']['title']
+            for word in clean_punctuation(buzz_title).split(' '):
+                if not word == word.upper() and word:
+                    # store the word
+                    category = part_of_speech(word.lower())
+                    if category is not None:
+                        if not Word.objects.filter(text=word.lower(), section=section).exists():
                             Word.objects.get_or_create(text=word.lower(),
                                                        syllable_count=syllable_count(word.lower()),
                                                        article_id=buzz['id'],
-                                                       category=Category.objects.get(name=category))
+                                                       category=Category.objects.get(name=category),
+                                                       section=section)
