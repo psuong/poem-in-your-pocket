@@ -5,8 +5,6 @@ import re
 import os
 import string
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pocket_poem.settings")
-
 from poem.models import Word, Category
 from poem.word_processing import syllable_count, part_of_speech
 from poem.categories import PARTS_OF_SPEECH
@@ -28,6 +26,7 @@ def clean_html(raw_html):
 
 def populate_categories():
     for category in PARTS_OF_SPEECH:
+        print category
         Category.objects.get_or_create(name=category)
 
 
@@ -35,9 +34,10 @@ def populate_words(buzz_section=None):
     if buzz_section is None:
         sections = SECTIONS
     else:
-        sections = SECTIONS
+        sections = buzz_section
 
     for section in sections:
+        print section
         # Use the section to get all the IDs from BUZZ_FEED_ENDPOINT
         feed_r = requests.get(BUZZ_FEEDS_ENDPOINT.format(section))
         buzzes = feed_r.json()['buzzes']
@@ -49,12 +49,9 @@ def populate_words(buzz_section=None):
                 for word in clean_html(sub_buzz['description']).split(' '):
                     if not word == word.upper() and word:
                         # store the word
-                        print 'Adding', word.lower()
-                        Word.objects.get_or_create(text=word.lower(),
-                                                   syllable_count=syllable_count(word.lower()),
-                                                   article_id=buzz['id'],
-                                                   category=part_of_speech(word.lower()))
-
-if __name__ == '__main__':
-    populate_categories()
-    populate_words()
+                        category = part_of_speech(word.lower())
+                        if category is not None:
+                            Word.objects.get_or_create(text=word.lower(),
+                                                       syllable_count=syllable_count(word.lower()),
+                                                       article_id=buzz['id'],
+                                                       category=Category.objects.get(name=category))
