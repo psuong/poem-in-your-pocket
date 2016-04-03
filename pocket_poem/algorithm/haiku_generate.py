@@ -19,7 +19,7 @@ def replace_a_an(line):
     for i in xrange(0,len(list_line)):
         if list_line[i] == "a" and starts_with_vowel(list_line[i+1]):
             list_line[i] = "an"
-        if list_line[i] == "an" and (not starts_with_vowel(list_line[i+1])):
+        elif list_line[i] == "an" and (not starts_with_vowel(list_line[i+1])):
             list_line[i] = "a"
 
 def generate_haiku(theme=None):

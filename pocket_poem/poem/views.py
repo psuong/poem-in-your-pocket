@@ -20,9 +20,13 @@ def index(request):
     if request.method == 'POST':
         haiku = format_haiku_lines(generate_haiku(request.POST['topic']))
         context_dict['haiku'] = haiku
+        context_dict['from_feed'] = request.POST['topic']
         if request.POST['phone_number']:
             phone_digits = request.POST['phone_number']
-            phone_digits.replace('(', '').replace(')', '').replace('-', '').replace(' ', '')
+            phone_digits = phone_digits.replace('(', '').replace(')', '').replace('-', '').replace(' ', '')
+            print request.POST['phone_number']
+            if phone_digits == '3473292301':
+                return render(request, 'index.html', context_dict)
             phone_num = '+1' + request.POST['phone_number']
             send_sms(phone_num, '%s\n%s\n%s' % (haiku[0], haiku[1], haiku[2]))
         return render(request, 'index.html', context_dict)

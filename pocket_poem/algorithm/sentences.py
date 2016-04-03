@@ -52,6 +52,14 @@ def article():
 def pronoun():
     return generatePOS('pronoun')
 
+# Generate a random pronoun
+def proper_noun():
+    return generatePOS('proper_noun')
+    
+# Generate a random pronoun
+def interjection():
+    return generatePOS('interjection')
+
 # List of all the different sentence structures
 # Repeated sentence structures are there to increase their likelihood of being chosen
 sentence_structures = [
@@ -66,6 +74,6 @@ sentence_structures = [
     [adjective, noun, verb, adverb],
     [article, noun, verb, article, noun],
     [preposition, article, noun],
-    [preposition, article, noun],
-    [article, noun, conjunction, article, noun]
+    [article, noun, conjunction, article, noun],
+    [interjection, noun]
 ]
