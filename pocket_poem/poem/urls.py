@@ -4,5 +4,6 @@ from django.conf.urls import url
 from poem import views
 
 urlpatterns = [
-    url('^$', views.index, name='index'),
+    url(r'^$', views.index, name='index'),
+    url(r'^sendtext', views.send_text, name='sendtext')
 ]
