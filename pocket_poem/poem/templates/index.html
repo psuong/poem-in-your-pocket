@@ -23,14 +23,14 @@
                     <div class="container col s4 offset-l4">
                         {% for topic in feeds %}
                         <div class="waves-effect waves-light btn red accent-1 col s4">
-                            <input name="topic" id="{{ topic }}" type="radio">
+                            <input name="topic" id="{{ topic }}" type="radio" required>
                             <label for="{{ topic }}" class="white-text">{{ topic }}</label>
                         </div>
                         {% endfor %}
                     </div>
                 </div>
                         <div class="input-field col s4 offset-l4">
-                            <input id="telephone" type="text" name="phone_number" length="10" class="validate" required>
+                            <input id="telephone" type="text" name="phone_number" length="10" class="validate">
                             <label for="telephone">Text this haiku to:</label>
                         </div>
                         <div class="col s6 offset-l3 center">

@@ -19,7 +19,8 @@ def index(request):
         phone_num = '+1' + request.POST['phone_number']
         haiku = format_haiku_lines(generate_haiku(request.POST['topic']))
         context_dict['haiku'] = haiku
-        send_sms(phone_num, '%s\n%s\n%s' % (haiku[0], haiku[1], haiku[2]))
+        if request.POST['telephone'].isdigit():
+            send_sms(phone_num, '%s\n%s\n%s' % (haiku[0], haiku[1], haiku[2]))
         return render(request, 'index.html', context_dict)
     else:
         return render(request, 'index.html', context_dict)
