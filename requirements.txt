@@ -1,3 +1,4 @@
-nltk
+
 textstat
 requests
+topia.termextract
