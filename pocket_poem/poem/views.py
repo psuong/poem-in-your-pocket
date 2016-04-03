@@ -2,13 +2,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from twilio_api import send_sms
+from buzzfeed import SECTIONS
 
 
 # Create your views here.
 def index(request):
     context_dict = {
-        'page_title': "Poem In Your Pocket",
-        'form_url': ''
+        'page_title': 'Poem In Your Pocket',
+        'form_url': '',
+        'feeds': SECTIONS,
     }
 
     if request.method == 'POST':
