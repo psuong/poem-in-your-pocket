@@ -2,10 +2,10 @@
 from topia.termextract import tag
 from textstat.textstat import textstat
 
-parts_of_speech = ('article', 'noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction')
+parts_of_speech = ('article', 'noun', 'verb', 'adjective', 'adverb', 'preposition', 'conjunction', 'pronoun')
 pos_dict = {'CC': 'conjunction', 'DT': 'article', 'IN': 'preposition', 'JJ': 'adjective', 'JJR': 'adjective',
-            'JJS': 'adjective', 'NN': 'noun', 'NNP': 'noun', 'NNPS': 'noun', 'NNS': 'noun', 'PRP': 'noun',
-            'PRP$': 'noun', 'RB': 'adverb', 'RBR': 'adverb', 'RBS': 'adverb', 'VB': 'verb', 'VBG': 'verb',
+            'JJS': 'adjective', 'NN': 'noun', 'NNP': 'noun', 'NNPS': 'noun', 'NNS': 'noun', 'PRP': 'pronoun',
+            'PRP$': 'pronoun', 'RB': 'adverb', 'RBR': 'adverb', 'RBS': 'adverb', 'VB': 'verb', 'VBG': 'verb',
             'VBN': 'verb', 'VPN': 'verb', 'VBZ': 'verb', 'WDT': 'article', 'WP': 'noun', 'WPS': 'noun', 'WRB': 'adverb'}
 
 tagger = tag.Tagger()
