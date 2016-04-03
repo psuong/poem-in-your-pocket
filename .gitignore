@@ -107,3 +107,8 @@ docs/_build/
 # PyBuilder
 target/
 
+# Virtualenv
+/[Vv]env
+
+# Orig files
+*.orig
