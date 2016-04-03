@@ -28,9 +28,9 @@ def article():
 	return generatePOS('articles')
 
 sentence_structures = [
-	#(article, noun, verb),
-	#(article, noun, verb, adverb),
-	#(noun, verb),
-	#(noun, verb, adverb),
+	[article, noun, verb],
+	[article, noun, verb, adverb],
+	[noun, verb],
+	[noun, verb, adverb],
 	[noun, verb, noun]
 ]

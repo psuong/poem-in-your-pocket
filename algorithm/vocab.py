@@ -1,9 +1,9 @@
 vocab = {
     'nouns': [
-        ['cat',1],['dog',1],['tiger',2],['lion',2]
+        ['cat',1],['dog',1],['tiger',2],['lion',2],['rhinocerous',4],['elephant',3]
     ],
     'verbs': [
-        ['runs',1],['walks',1],['destroys',2],['vomits',2]
+        ['runs',1],['walks',1],['destroys',2],['vomits',2],['eliminates',4]
     ],
     'adjectives': [
         ['sad',1], ['happy',2], ['agitated',4], ['quick',1]
