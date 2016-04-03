@@ -1,9 +1,10 @@
 Django==1.9.5
 gunicorn==19.4.5
 httplib2==0.9.2
-requests
-topia.termextract
-textstat
 pytz==2016.3
+requests==2.9.1
 six==1.10.0
+textstat==0.2
+topia.termextract==1.1.0
 twilio==5.4.0
+zope.interface==4.1.3
