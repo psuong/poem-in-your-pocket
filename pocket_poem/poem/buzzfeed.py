@@ -1,5 +1,4 @@
 # coding=utf-8
-
 import requests
 import re
 import os
@@ -49,7 +48,7 @@ def populate_words(buzz_section=None):
                 for word in clean_html(sub_buzz['description']).split(' '):
                     if not word == word.upper() and word:
                         # store the word
-                        print 'Adding', word.lower()
+                        print ('Adding', word.lower())
                         Word.objects.get_or_create(text=word.lower(),
                                                    syllable_count=syllable_count(word.lower()),
                                                    article_id=buzz['id'],
