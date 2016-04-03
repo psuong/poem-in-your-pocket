@@ -18,6 +18,6 @@ from django.contrib import admin
 from poem import urls as poem_urls
 
 urlpatterns = [
-    url(r'^$', include(poem_urls)),
+    url(r'', include(poem_urls)),
     url(r'^admin/', include(admin.site.urls)),
 ]

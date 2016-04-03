@@ -15,19 +15,18 @@
     		</div>
     	</nav>
         <div class="row">
-            <br>
-            <br>
-            <form method="POST" action="{{ form_url }}">
+            <form method="POST" action="{{ form_url }}" id="haiku-form">
                 {% csrf_token %}
                 <div class="row">
+                    <div class="col s12 center" style="background-color: lightyellow;"><h5>Text for free haikus:<br> 347-329-2301</h5></div>
                     <div class="container col s6 offset-l3">
 
                         <div class="col s12">
-
+                        <h5>Select a topic</h5>
                         {% for topic in feeds %}
 
                             <div class="grey lighten-2 col s4">
-                                    <input name="topic" id="{{ topic }}" type="radio">
+                                    <input name="topic" id="{{ topic }}" type="radio" required>
                                 <label for="{{ topic }}" class="black-text">{{ topic }}</label>
                             </div>
 
@@ -51,11 +50,12 @@
                     </div>
                 </div>
                         <div class="input-field col s4 offset-l4">
-                            <input id="telephone" type="text" name="phone_number" length="10" class="validate">
-                            <label for="telephone">Text this haiku to:</label>
+                            <i class="material-icons prefix">phone</i>
+                            <input id="telephone" type="text" name="phone_number" maxlength="14" class="validate">
+                            <label for="telephone">(OPTIONAL) Phone number - (XXX) XXX-XXXX</label>
                         </div>
                         <div class="col s6 offset-l3 center">
-                            <button class="red accent-4 btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                            <button class="red accent-4 btn waves-effect waves-light" type="submit" name="action">Generate</button>
                         </div>
             </form>
         </div>
@@ -65,6 +65,53 @@
 
             $(document).ready(function() {
                 $('select').material_select();
+                
+                $('#telephone', '#haiku-form')
+
+                	.keydown(function (e) {
+                		var key = e.charCode || e.keyCode || 0;
+                		$phone = $(this);
+                
+                		// Auto-format- do not expose the mask as the user begins to type
+                		if (key !== 8 && key !== 9) {
+                			if ($phone.val().length === 4) {
+                				$phone.val($phone.val() + ')');
+                			}
+                			if ($phone.val().length === 5) {
+                				$phone.val($phone.val() + ' ');
+                			}			
+                			if ($phone.val().length === 9) {
+                				$phone.val($phone.val() + '-');
+                			}
+                		}
+                
+                		// Allow numeric (and tab, backspace, delete) keys only
+                		return (key == 8 || 
+                				key == 9 ||
+                				key == 46 ||
+                				(key >= 48 && key <= 57) ||
+                				(key >= 96 && key <= 105));	
+                	})
+                	
+                	.bind('focus click', function () {
+                		$phone = $(this);
+                		
+                		if ($phone.val().length === 0) {
+                			$phone.val('(');
+                		}
+                		else {
+                			var val = $phone.val();
+                			$phone.val('').val(val); // Ensure cursor remains at the end
+                		}
+                	})
+                	
+                	.blur(function () {
+                		$phone = $(this);
+                		
+                		if ($phone.val() === '(') {
+                			$phone.val('');
+                		}
+                	});
             });
         </script>
 
