@@ -6,4 +6,5 @@ PARTS_OF_SPEECH = (('article', 'article'),
                    ('adverb', 'adverb'),
                    ('preposition', 'preposition'),
                    ('conjunction', 'conjunction'),
+                   ('pronoun', 'pronoun'),
                    )

@@ -62,4 +62,4 @@ def generate_line(syll_count, theme=None):
     for x in xrange(0, len(rand_sentence)):
         sentence[rand_index[x]] = rand_sentence[x]
 
-    return " ".join(sentence)
+    return " ".join(sentence).encode('utf-8')
